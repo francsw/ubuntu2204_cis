@@ -1,6 +1,6 @@
 ---
 # defaults file for Ubuntu2004-CIS
-ubuntu2004cis_skip_for_travis: false
+ubuntu2004cis_skip_for_travis: true
 
 ubuntu2004cis_notauto: false
 ubuntu2004cis_section1: true
@@ -8,9 +8,9 @@ ubuntu2004cis_section2: true
 ubuntu2004cis_section3: true
 ubuntu2004cis_section4: true
 ubuntu2004cis_section5: true
-ubuntu2004cis_section6: true
+ubuntu2004cis_section6: false
 
-ubuntu2004cis_selinux_disable: false
+ubuntu2004cis_selinux_disable: true
 ubuntu2004cis_auditd_disable: false
 
 # Ignore remount errors if you're building an image or are going to reboot anyway
@@ -322,10 +322,10 @@ ubuntu2004cis_set_boot_pass: false
 ubuntu2004cis_is_router: false
 
 # IPv6 required
-ubuntu2004cis_ipv6_required: true
+ubuntu2004cis_ipv6_required: false
 
 # AIDE
-ubuntu2004cis_config_aide: true
+ubuntu2004cis_config_aide: false
 # AIDE cron settings
 ubuntu2004cis_aide_cron:
   cron_user: root
@@ -367,8 +367,8 @@ ubuntu2004cis_time_synchronization_servers:
 # 3.3 TCP Wrappers
 ubuntu2004cis_setup_tcp_wrappers: false
 
-ubuntu2004cis_firewall: firewalld
-# ubuntu2004cis_firewall: iptables
+# ubuntu2004cis_firewall: firewalld
+ubuntu2004cis_firewall: iptables
 # ubuntu2004cis_firewall: ufw
 # ubuntu2004cis_firewall: nftables
 
