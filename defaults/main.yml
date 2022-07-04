@@ -8,7 +8,7 @@ ubuntu2004cis_section2: true
 ubuntu2004cis_section3: true
 ubuntu2004cis_section4: true
 ubuntu2004cis_section5: true
-ubuntu2004cis_section6: false
+ubuntu2004cis_section6: true
 
 ubuntu2004cis_selinux_disable: true
 ubuntu2004cis_auditd_disable: false
