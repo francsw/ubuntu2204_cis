@@ -579,9 +579,13 @@
             line: 'account required pam_faillock.so'
 
       - name: "SCORED | 5.3.2 | PATCH |  Ensure lockout for failed password attempts is configured - /etc/pam.d/common-auth"
-        lineinfile:
+        file:
+            src: pam_d_common-auth
             dest: /etc/pam.d/common-auth
-            line: 'auth required pam_faillock.so preauth audit silent deny=5 unlock_time=900'
+            mode: '0640'
+            owner: root
+            group: root
+
   when:
       - ubuntu2004cis_rule_5_3_2
   tags:
