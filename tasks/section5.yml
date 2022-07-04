@@ -579,7 +579,7 @@
             line: 'account required pam_faillock.so'
 
       - name: "SCORED | 5.3.2 | PATCH |  Ensure lockout for failed password attempts is configured - /etc/pam.d/common-auth"
-        file:
+        copy:
             src: pam_d_common-auth
             dest: /etc/pam.d/common-auth
             mode: '0640'
