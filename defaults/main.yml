@@ -484,4 +484,4 @@ chrony_system_user:
   Debian: _chrony
 
 ### Firewall
-ubuntu2204cis_setup_firewall: false
+ubuntu2204cis_setup_firewall: true
