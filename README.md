@@ -1,23 +1,23 @@
-Ubuntu 20.04 CIS STIG
+Ubuntu 22.04 CIS STIG
 ================
 
-[![Build Status](https://travis-ci.com/florianutz/ubuntu2004_cis.svg?branch=main)](https://travis-ci.com/florianutz/ubuntu2004_cis)
-[![Ansible Role](https://img.shields.io/badge/role-florianutz.ubuntu2004--cis-blue.svg)](https://galaxy.ansible.com/florianutz/ubuntu2004_cis/)
+[![Build Status](https://travis-ci.com/florianutz/Ubuntu2204_cis.svg?branch=main)](https://travis-ci.com/florianutz/Ubuntu2204_cis)
+[![Ansible Role](https://img.shields.io/badge/role-florianutz.Ubuntu2204--cis-blue.svg)](https://galaxy.ansible.com/florianutz/Ubuntu2204_cis/)
 
-**This role is based on 18.04 migration. The tasks are correct in content, but have to be re-sorted to fit the 20.04 Benchmark. Contribution welcome.**
+**This role is based on 18.04 migration. The tasks are correct in content, but have to be re-sorted to fit the 22.04 Benchmark. Contribution welcome.**
 
-Configure Ubuntu 20.04 machine to be CIS compliant. Level 1 and 2 findings will be corrected by default.
+Configure Ubuntu 22.04 machine to be CIS compliant. Level 1 and 2 findings will be corrected by default.
 
 This role **will make changes to the system** that could break things. This is not an auditing tool but rather a remediation tool to be used after an audit has been conducted.
 
-Based on [CIS Ubuntu Linux 20.04 LTS Benchmark - v1.0.0 - 07-21-2020 ](https://www.cisecurity.org/cis-benchmarks/).
+Based on [CIS Ubuntu Linux 22.04 LTS Benchmark - v1.0.0 - 07-21-2020 ](https://www.cisecurity.org/cis-benchmarks/).
 
 ## Feedback
 
 - If you like our work but cannot contribute to the code of the role by yourself, please take a moment to rate it in Ansible Galaxy.
  There you can easily give positive feedback to the developers about their work.
- [Galaxy Community Score](https://galaxy.ansible.com/florianutz/ubuntu2004_cis/)
-- If you find a bug within the role, but can't fix it yourself, please create a ticket with as many details as possible. Please keep in mind that all developers work on the project in their spare time, and it may take some time to get feedback [Issues Page](https://github.com/florianutz/ubuntu2004_cis/issues)
+ [Galaxy Community Score](https://galaxy.ansible.com/florianutz/Ubuntu2204_cis/)
+- If you find a bug within the role, but can't fix it yourself, please create a ticket with as many details as possible. Please keep in mind that all developers work on the project in their spare time, and it may take some time to get feedback [Issues Page](https://github.com/florianutz/Ubuntu2204_cis/issues)
 
 ## IMPORTANT INSTALL STEP
 
@@ -28,7 +28,7 @@ If you want to install this via the `ansible-galaxy` command you'll need to run 
 With this in the file requirements.yml:
 
 ```
-- src: https://github.com/florianutz/ubuntu2004_cis.git
+- src: https://github.com/florianutz/Ubuntu2204_cis.git
 ```
 
 ## Example Playbook
@@ -41,11 +41,11 @@ With this in the file requirements.yml:
   become: yes
 
   roles:
-    - ubuntu2004_cis
+    - Ubuntu2204_cis
 ```
 
 To run the tasks in this repository, first create this file one level above the repository
-(i.e. the playbook .yml and the directory `ubuntu2004_cis` should be next to each other),
+(i.e. the playbook .yml and the directory `Ubuntu2204_cis` should be next to each other),
 then review the file `defaults/main.yml` and disable any rule/section you do not wish to execute.
 
 Assuming you named the file `site.yml`, run it with:
@@ -61,67 +61,67 @@ You should carefully read through the tasks to make sure these changes will not 
 
 There are many role variables defined in defaults/main.yml. This list shows the most important.
 
-**ubuntu2004cis_notauto**: Run CIS checks that we typically do NOT want to automate due to the high probability of breaking the system (Default: false)
+**ubuntu2204cis_notauto**: Run CIS checks that we typically do NOT want to automate due to the high probability of breaking the system (Default: false)
 
-**ubuntu2004cis_section1**: CIS - General Settings (Section 1) (Default: true)
+**ubuntu2204cis_section1**: CIS - General Settings (Section 1) (Default: true)
 
-**ubuntu2004cis_section2**: CIS - Services settings (Section 2) (Default: true)
+**ubuntu2204cis_section2**: CIS - Services settings (Section 2) (Default: true)
 
-**ubuntu2004cis_section3**: CIS - Network settings (Section 3) (Default: true)
+**ubuntu2204cis_section3**: CIS - Network settings (Section 3) (Default: true)
 
-**ubuntu2004cis_section4**: CIS - Logging and Auditing settings (Section 4) (Default: true)
+**ubuntu2204cis_section4**: CIS - Logging and Auditing settings (Section 4) (Default: true)
 
-**ubuntu2004cis_section5**: CIS - Access, Authentication and Authorization settings (Section 5) (Default: true)
+**ubuntu2204cis_section5**: CIS - Access, Authentication and Authorization settings (Section 5) (Default: true)
 
-**ubuntu2004cis_section6**: CIS - System Maintenance settings (Section 6) (Default: true)  
+**ubuntu2204cis_section6**: CIS - System Maintenance settings (Section 6) (Default: true)  
 
 ### Disable all selinux functions
-`ubuntu2004cis_selinux_disable: false`
+`ubuntu2204cis_selinux_disable: false`
 
 ### Service variables
 ####These control whether a server should or should not be allowed to continue to run these services
 
 ```
-ubuntu2004cis_avahi_server: false  
-ubuntu2004cis_cups_server: false  
-ubuntu2004cis_dhcp_server: false  
-ubuntu2004cis_ldap_server: false  
-ubuntu2004cis_telnet_server: false  
-ubuntu2004cis_nfs_server: false  
-ubuntu2004cis_rpc_server: false  
-ubuntu2004cis_ntalk_server: false  
-ubuntu2004cis_rsyncd_server: false  
-ubuntu2004cis_tftp_server: false  
-ubuntu2004cis_rsh_server: false  
-ubuntu2004cis_nis_server: false  
-ubuntu2004cis_snmp_server: false  
-ubuntu2004cis_squid_server: false  
-ubuntu2004cis_smb_server: false  
-ubuntu2004cis_dovecot_server: false  
-ubuntu2004cis_httpd_server: false  
-ubuntu2004cis_vsftpd_server: false  
-ubuntu2004cis_named_server: false  
-ubuntu2004cis_allow_autofs: false
+ubuntu2204cis_avahi_server: false  
+ubuntu2204cis_cups_server: false  
+ubuntu2204cis_dhcp_server: false  
+ubuntu2204cis_ldap_server: false  
+ubuntu2204cis_telnet_server: false  
+ubuntu2204cis_nfs_server: false  
+ubuntu2204cis_rpc_server: false  
+ubuntu2204cis_ntalk_server: false  
+ubuntu2204cis_rsyncd_server: false  
+ubuntu2204cis_tftp_server: false  
+ubuntu2204cis_rsh_server: false  
+ubuntu2204cis_nis_server: false  
+ubuntu2204cis_snmp_server: false  
+ubuntu2204cis_squid_server: false  
+ubuntu2204cis_smb_server: false  
+ubuntu2204cis_dovecot_server: false  
+ubuntu2204cis_httpd_server: false  
+ubuntu2204cis_vsftpd_server: false  
+ubuntu2204cis_named_server: false  
+ubuntu2204cis_allow_autofs: false
 ```  
 
 ### Designate server as a Mail server
-`ubuntu2004cis_is_mail_server: false`
+`ubuntu2204cis_is_mail_server: false`
 
 
 ####System network parameters (host only OR host and router)
-`ubuntu2004cis_is_router: false`  
+`ubuntu2204cis_is_router: false`  
 
 
 ####IPv6 required
-`ubuntu2004cis_ipv6_required: true`  
+`ubuntu2204cis_ipv6_required: true`  
 
 
 ### AIDE
-`ubuntu2004cis_config_aide: true`
+`ubuntu2204cis_config_aide: true`
 
 #### AIDE cron settings
 ```
-ubuntu2004cis_aide_cron:
+ubuntu2204cis_aide_cron:
   cron_user: root
   cron_file: /etc/crontab
   aide_job: '/usr/sbin/aide --check'
@@ -134,25 +134,25 @@ ubuntu2004cis_aide_cron:
 
 
 ### Set to 'true' if X Windows is needed in your environment
-`ubuntu2004cis_xwindows_required: no`
+`ubuntu2204cis_xwindows_required: no`
 
 
 ### Client application requirements
 ```
-ubuntu2004cis_openldap_clients_required: false
-ubuntu2004cis_telnet_required: false
-ubuntu2004cis_talk_required: false  
-ubuntu2004cis_rsh_required: false
-ubuntu2004cis_ypbind_required: false
-ubuntu2004cis_rpc_required: false
+ubuntu2204cis_openldap_clients_required: false
+ubuntu2204cis_telnet_required: false
+ubuntu2204cis_talk_required: false  
+ubuntu2204cis_rsh_required: false
+ubuntu2204cis_ypbind_required: false
+ubuntu2204cis_rpc_required: false
 ```
 
 ### Time Synchronization
 ```
-ubuntu2004cis_time_synchronization: chrony
-ubuntu2004cis_time_Synchronization: ntp
+ubuntu2204cis_time_synchronization: chrony
+ubuntu2204cis_time_Synchronization: ntp
 
-ubuntu2004cis_time_synchronization_servers:
+ubuntu2204cis_time_synchronization_servers:
   - uri: "0.pool.ntp.org"
     config: "minpoll 8"
   - uri: "1.pool.ntp.org"
@@ -171,21 +171,21 @@ It is not implemented, noexec for /tmp will disrupt apt. /tmp contains executabl
 ### 1.5.3 | PATCH | Ensure authentication required for single user mode
 It is disabled by default as it is setting random password for root. To enable it set:
 ```yaml
-ubuntu2004cis_rule_1_5_3: true
+ubuntu2204cis_rule_1_5_3: true
 ```
 To use other than random password:
 ```yaml
-ubuntu2004cis_root_password: 'new password'
+ubuntu2204cis_root_password: 'new password'
 ```
 
 ```
-ubuntu2004cis_firewall: firewalld
-ubuntu2004cis_firewall: iptables
+ubuntu2204cis_firewall: firewalld
+ubuntu2204cis_firewall: iptables
 ```
 
 ### 5.3.1 | PATCH | Ensure password creation requirements are configured
 ```
-ubuntu2004cis_pwquality:
+ubuntu2204cis_pwquality:
   - key: 'minlen'
     value: '14'
   - key: 'dcredit'

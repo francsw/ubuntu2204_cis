@@ -11,8 +11,8 @@
       - net.ipv6.conf.default.disable_ipv6
       - net.ipv6.conf.lo.disable_ipv6
   when:
-      - not ubuntu2004cis_ipv6_required
-      - ubuntu2004cis_rule_3_1_1
+      - not ubuntu2204cis_ipv6_required
+      - ubuntu2204cis_rule_3_1_1
   tags:
       - level2
       - notscored
@@ -27,8 +27,8 @@
       replace: '\1 ipv6.disable=1\2'
   ignore_errors: true
   when:
-      - not ubuntu2004cis_ipv6_required
-      - ubuntu2004cis_rule_3_1_1
+      - not ubuntu2204cis_ipv6_required
+      - ubuntu2204cis_rule_3_1_1
   notify:
       - generate new grub config
   tags:
@@ -49,8 +49,8 @@
       - { name: net.ipv4.conf.all.send_redirects, value: 0 }
       - { name: net.ipv4.conf.default.send_redirects, value: 0 }
   when:
-      - not ubuntu2004cis_ipv6_required
-      - ubuntu2004cis_rule_3_1_2
+      - not ubuntu2204cis_ipv6_required
+      - ubuntu2204cis_rule_3_1_2
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -72,8 +72,8 @@
       - { name: net.ipv4.conf.all.send_redirects, value: 0 }
       - { name: net.ipv4.conf.default.send_redirects, value: 0 }
   when:
-      - not ubuntu2004cis_is_router
-      - ubuntu2004cis_rule_3_2_1
+      - not ubuntu2204cis_is_router
+      - ubuntu2204cis_rule_3_2_1
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -102,12 +102,12 @@
             state: present
             reload: true
             ignoreerrors: true
-        when: ubuntu2004cis_ipv6_required
+        when: ubuntu2204cis_ipv6_required
         notify:
             - sysctl flush ipv6 route table
   when:
-      - not ubuntu2004cis_is_router
-      - ubuntu2004cis_rule_3_2_2
+      - not ubuntu2204cis_is_router
+      - ubuntu2204cis_rule_3_2_2
   tags:
       - level1
       - scored
@@ -143,11 +143,11 @@
             - { name: net.ipv6.conf.all.accept_source_route, value: 0 }
             - { name: net.ipv6.conf.default.accept_source_route, value: 0 }
         when:
-            - ubuntu2004cis_ipv6_required
+            - ubuntu2204cis_ipv6_required
         notify:
             - sysctl flush ipv6 route table
   when:
-      - ubuntu2004cis_rule_3_3_1
+      - ubuntu2204cis_rule_3_3_1
   tags:
       - level1
       - scored
@@ -183,11 +183,11 @@
             - { name: net.ipv6.conf.all.accept_redirects, value: 0 }
             - { name: net.ipv6.conf.default.accept_redirects, value: 0 }
         when:
-            - ubuntu2004cis_ipv6_required
+            - ubuntu2204cis_ipv6_required
         notify:
             - sysctl flush ipv6 route table
   when:
-      - ubuntu2004cis_rule_3_3_2
+      - ubuntu2204cis_rule_3_3_2
   tags:
       - level1
       - scored
@@ -207,7 +207,7 @@
       - { name: net.ipv4.conf.all.secure_redirects, value: 0 }
       - { name: net.ipv4.conf.default.secure_redirects, value: 0 }
   when:
-      - ubuntu2004cis_rule_3_3_3
+      - ubuntu2204cis_rule_3_3_3
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -229,7 +229,7 @@
       - { name: net.ipv4.conf.all.log_martians, value: 1 }
       - { name: net.ipv4.conf.default.log_martians, value: 1 }
   when:
-      - ubuntu2004cis_rule_3_3_4
+      - ubuntu2204cis_rule_3_3_4
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -247,7 +247,7 @@
       reload: true
       ignoreerrors: true
   when:
-      - ubuntu2004cis_rule_3_3_5
+      - ubuntu2204cis_rule_3_3_5
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -265,7 +265,7 @@
       reload: true
       ignoreerrors: true
   when:
-      - ubuntu2004cis_rule_3_3_6
+      - ubuntu2204cis_rule_3_3_6
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -287,7 +287,7 @@
       - { name: net.ipv4.conf.all.rp_filter, value: 1 }
       - { name: net.ipv4.conf.default.rp_filter, value: 1 }
   when:
-      - ubuntu2004cis_rule_3_3_7
+      - ubuntu2204cis_rule_3_3_7
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -305,7 +305,7 @@
       reload: true
       ignoreerrors: true
   when:
-      - ubuntu2004cis_rule_3_3_8
+      - ubuntu2204cis_rule_3_3_8
   notify:
       - sysctl flush ipv4 route table
   tags:
@@ -326,8 +326,8 @@
       - { name: net.ipv6.conf.all.accept_ra, value: 0 }
       - { name: net.ipv6.conf.default.accept_ra, value: 0 }
   when:
-      - ubuntu2004cis_ipv6_required
-      - ubuntu2004cis_rule_3_3_9
+      - ubuntu2204cis_ipv6_required
+      - ubuntu2204cis_rule_3_3_9
   notify:
       - sysctl flush ipv6 route table
   tags:
@@ -344,7 +344,7 @@
       line: "install dccp /bin/true"
       create: true
   when:
-      - ubuntu2004cis_rule_3_4_1
+      - ubuntu2204cis_rule_3_4_1
   tags:
       - level2
       - scored
@@ -358,7 +358,7 @@
       line: "install sctp /bin/true"
       create: true
   when:
-      - ubuntu2004cis_rule_3_4_2
+      - ubuntu2204cis_rule_3_4_2
   tags:
       - level2
       - scored
@@ -372,7 +372,7 @@
       line: "install rds /bin/true"
       create: true
   when:
-      - ubuntu2004cis_rule_3_4_3
+      - ubuntu2204cis_rule_3_4_3
   tags:
       - level2
       - scored
@@ -386,7 +386,7 @@
       line: "install tipc /bin/true"
       create: true
   when:
-      - ubuntu2004cis_rule_3_4_4
+      - ubuntu2204cis_rule_3_4_4
   tags:
       - level2
       - scored
@@ -399,9 +399,9 @@
       state: present
       install_recommends: false
   when:
-      - ubuntu2004cis_firewall == "ufw"
-      - ubuntu2004cis_rule_3_5_1_1
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_firewall == "ufw"
+      - ubuntu2204cis_rule_3_5_1_1
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -413,9 +413,9 @@
       name: iptables-persistent
       state: absent
   when:
-      - ubuntu2004cis_firewall == "ufw"
-      - ubuntu2004cis_rule_3_5_1_2
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_firewall == "ufw"
+      - ubuntu2204cis_rule_3_5_1_2
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -428,9 +428,9 @@
       state: started
       enabled: true
   when:
-      - ubuntu2004cis_rule_3_5_1_3
-      - ubuntu2004cis_firewall == "ufw"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_1_3
+      - ubuntu2204cis_firewall == "ufw"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -456,11 +456,11 @@
             rule: deny
             direction: in
             from: "::1"
-        when: ubuntu2004cis_ipv6_required
+        when: ubuntu2204cis_ipv6_required
   when:
-      - ubuntu2004cis_rule_3_5_1_4
-      - ubuntu2004cis_firewall == "ufw"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_1_4
+      - ubuntu2204cis_firewall == "ufw"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -473,9 +473,9 @@
       direction: out
       interface: all
   when:
-      - ubuntu2004cis_rule_3_5_1_5
-      - ubuntu2004cis_firewall == "ufw"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_1_5
+      - ubuntu2204cis_firewall == "ufw"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - notscored
@@ -499,9 +499,9 @@
             - tcp
             - udp
   when:
-      - ubuntu2004cis_rule_3_5_1_6
-      - ubuntu2004cis_firewall == "ufw"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_1_6
+      - ubuntu2204cis_firewall == "ufw"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - notscored
@@ -517,9 +517,9 @@
       - { rule: deny, direction: outgoing }
       - { rule: deny, direction: routed }
   when:
-      - ubuntu2004cis_rule_3_5_1_7
-      - ubuntu2004cis_firewall == "ufw"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_1_7
+      - ubuntu2204cis_firewall == "ufw"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -532,9 +532,9 @@
       state: present
       install_recommends: false
   when:
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_rule_3_5_2_1
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_rule_3_5_2_1
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -546,9 +546,9 @@
       name: ufw
       state: absent
   when:
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_rule_3_5_2_2
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_rule_3_5_2_2
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -565,11 +565,11 @@
         iptables:
             flush: yes
             ip_version: ipv6
-        when: ubuntu2004cis_ipv6_required
+        when: ubuntu2204cis_ipv6_required
   when:
-      - ubuntu2004cis_rule_3_5_2_3
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_3
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - notscored
@@ -578,7 +578,7 @@
 
 - name: "SCORED | 3.5.2.4 | PATCH | Ensure a table exists"
   shell: |
-      nft create table inet {{ ubuntu2004cis_nftables_table }}
+      nft create table inet {{ ubuntu2204cis_nftables_table }}
   args:
       executable: /bin/bash
   changed_when: false
@@ -587,9 +587,9 @@
   # nft create table will raise an error
   ignore_errors: true
   when:
-      - ubuntu2004cis_rule_3_5_2_4
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_4
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -598,7 +598,7 @@
 
 - name: "SCORED | 3.5.2.5 | PATCH | Ensure base chains exist"
   shell: |
-      nft chain inet {{ ubuntu2004cis_nftables_table }} {{ item }} { type filter hook {{ item }} priority 0\; }
+      nft chain inet {{ ubuntu2204cis_nftables_table }} {{ item }} { type filter hook {{ item }} priority 0\; }
   args:
       executable: /bin/bash
   loop:
@@ -608,9 +608,9 @@
   changed_when: false
   check_mode: false
   when:
-      - ubuntu2004cis_rule_3_5_2_5
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_5
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -621,7 +621,7 @@
   block:
       - name: "SCORED | 3.5.2.6 | PATCH | Ensure loopback traffic is configured | ingress lo allow nay"
         shell: |
-            nft add rule inet {{ ubuntu2004cis_nftables_table }} input iif lo accept
+            nft add rule inet {{ ubuntu2204cis_nftables_table }} input iif lo accept
         args:
             executable: /bin/bash
         changed_when: false
@@ -629,7 +629,7 @@
 
       - name: "SCORED | 3.5.2.6 | PATCH | Ensure loopback traffic is configured | ingress deny from lo network ipv4"
         shell: |
-            nft add rule inet {{ ubuntu2004cis_nftables_table }} input ip saddr 127.0.0.0/8 counter drop
+            nft add rule inet {{ ubuntu2204cis_nftables_table }} input ip saddr 127.0.0.0/8 counter drop
         args:
             executable: /bin/bash
         changed_when: false
@@ -637,16 +637,16 @@
 
       - name: "SCORED | 3.5.2.6 | PATCH | Ensure loopback traffic is configured | ingress deny from lo network ipv6"
         shell: |
-            nft add rule inet {{ ubuntu2004cis_nftables_table }} input ip6 saddr ::1 counter drop
+            nft add rule inet {{ ubuntu2204cis_nftables_table }} input ip6 saddr ::1 counter drop
         args:
             executable: /bin/bash
         changed_when: false
         check_mode: false
-        when: ubuntu2004cis_ipv6_required
+        when: ubuntu2204cis_ipv6_required
   when:
-      - ubuntu2004cis_rule_3_5_2_6
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_6
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -655,8 +655,8 @@
 
 - name: "NOTSCORED | 3.5.2.7 | PATCH | Ensure outbound and established connections are configured"
   shell: |
-      nft add rule inet {{ ubuntu2004cis_nftables_table }} input ip protocol {{ item }} ct state established accept
-      nft add rule inet {{ ubuntu2004cis_nftables_table }} output ip protocol {{ item }} ct state new,related,established accept
+      nft add rule inet {{ ubuntu2204cis_nftables_table }} input ip protocol {{ item }} ct state established accept
+      nft add rule inet {{ ubuntu2204cis_nftables_table }} output ip protocol {{ item }} ct state new,related,established accept
   args:
       executable: /bin/bash
   loop:
@@ -666,9 +666,9 @@
   changed_when: false
   check_mode: false
   when:
-      - ubuntu2004cis_rule_3_5_2_7
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_7
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - notscored
@@ -677,7 +677,7 @@
 
 - name: "SCORED | 3.5.2.8 | PATCH | Ensure default deny policy"
   shell: |
-      nft chain inet {{ ubuntu2004cis_nftables_table }} {{ item }} { policy drop \; }
+      nft chain inet {{ ubuntu2204cis_nftables_table }} {{ item }} { policy drop \; }
   args:
       executable: /bin/bash
   loop:
@@ -687,9 +687,9 @@
   changed_when: false
   check_mode: false
   when:
-      - ubuntu2004cis_rule_3_5_2_8
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_8
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -702,9 +702,9 @@
       state: started
       enabled: true
   when:
-      - ubuntu2004cis_rule_3_5_2_9
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_9
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -713,11 +713,11 @@
 
 - name: "SCORED | 3.5.2.10 | PATCH | Ensure nftables rules are permanent"
   shell:
-      nft list table inet {{ ubuntu2004cis_nftables_table }} > /etc/nftables.conf
+      nft list table inet {{ ubuntu2204cis_nftables_table }} > /etc/nftables.conf
   when:
-      - ubuntu2004cis_rule_3_5_2_10
-      - ubuntu2004cis_firewall == "nftables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_2_10
+      - ubuntu2204cis_firewall == "nftables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -730,7 +730,7 @@
       state: present
       install_recommends: false
   when:
-      - ubuntu2004cis_firewall == "iptables"
+      - ubuntu2204cis_firewall == "iptables"
   tags:
       - level1
       - scored
@@ -745,10 +745,10 @@
           - ufw
       state: absent
   when:
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_rule_3_5_3_1_2
-      - ubuntu2004cis_rule_3_5_3_1_3
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_rule_3_5_3_1_2
+      - ubuntu2204cis_rule_3_5_3_1_3
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -765,9 +765,9 @@
       - OUTPUT
       - FORWARD
   when:
-      - ubuntu2004cis_rule_3_5_3_1_2
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_3_1_2
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -794,9 +794,9 @@
             jump: DROP
             source: 127.0.0.0/8
   when:
-      - ubuntu2004cis_rule_3_5_3_2_2
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_3_2_2
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -827,9 +827,9 @@
             - udp
             - icmp
   when:
-      - ubuntu2004cis_rule_3_5_3_2_3
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_3_2_3
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - notscored
@@ -857,9 +857,9 @@
             - tcp
             - udp
   when:
-      - ubuntu2004cis_rule_3_5_3_2_4
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
+      - ubuntu2204cis_rule_3_5_3_2_4
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
   tags:
       - level1
       - scored
@@ -876,10 +876,10 @@
       - OUTPUT
       - FORWARD
   when:
-      - ubuntu2004cis_rule_3_5_3_3_1
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
-      - ubuntu2004cis_ipv6_required
+      - ubuntu2204cis_rule_3_5_3_3_1
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
+      - ubuntu2204cis_ipv6_required
   tags:
       - level1
       - scored
@@ -909,10 +909,10 @@
             source: "::1"
             ip_version: ipv6
   when:
-      - ubuntu2004cis_rule_3_5_3_3_2
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
-      - ubuntu2004cis_ipv6_required
+      - ubuntu2204cis_rule_3_5_3_3_2
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
+      - ubuntu2204cis_ipv6_required
   tags:
       - level1
       - scored
@@ -945,10 +945,10 @@
             - udp
             - icmp
   when:
-      - ubuntu2004cis_rule_3_5_3_3_3
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
-      - ubuntu2004cis_ipv6_required
+      - ubuntu2204cis_rule_3_5_3_3_3
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
+      - ubuntu2204cis_ipv6_required
   tags:
       - level1
       - notscored
@@ -978,10 +978,10 @@
             - tcp
             - udp
   when:
-      - ubuntu2004cis_rule_3_5_3_3_4
-      - ubuntu2004cis_firewall == "iptables"
-      - ubuntu2004cis_setup_firewall
-      - ubuntu2004cis_ipv6_required
+      - ubuntu2204cis_rule_3_5_3_3_4
+      - ubuntu2204cis_firewall == "iptables"
+      - ubuntu2204cis_setup_firewall
+      - ubuntu2204cis_ipv6_required
   tags:
       - level1
       - notscored

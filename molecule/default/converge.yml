@@ -2,7 +2,7 @@
 - name: Converge
   hosts: all
   vars:
-    ubuntu2004cis_skip_for_travis: true
-    ubuntu2004cis_selinux_disable: true
+    ubuntu2204cis_skip_for_travis: true
+    ubuntu2204cis_selinux_disable: true
   roles:
-    - role: ubuntu2004_cis
+    - role: Ubuntu2204_cis

@@ -61,7 +61,7 @@
     state: present
     install_recommends: false
   when:
-    - not ubuntu2004cis_auditd_disable
+    - not ubuntu2204cis_auditd_disable
 
 - name: "PRELIM | Section 5.1 | Configure cron"
   apt:

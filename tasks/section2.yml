@@ -27,7 +27,7 @@
         when:
             - chargen_stream_service.stat.exists
   when:
-      - ubuntu2004cis_rule_2_1_1
+      - ubuntu2204cis_rule_2_1_1
   tags:
       - level1
       - scored
@@ -64,7 +64,7 @@
         when:
             - daytime_stream_service.stat.exists
   when:
-      - ubuntu2004cis_rule_2_1_2
+      - ubuntu2204cis_rule_2_1_2
   tags:
       - level1
       - scored
@@ -100,7 +100,7 @@
         when:
             - discard_stream_service.stat.exists
   when:
-      - ubuntu2004cis_rule_2_1_3
+      - ubuntu2204cis_rule_2_1_3
   tags:
       - level1
       - scored
@@ -136,7 +136,7 @@
         when:
             - echo_stream_service.stat.exists
   when:
-      - ubuntu2004cis_rule_2_1_4
+      - ubuntu2204cis_rule_2_1_4
   tags:
       - level1
       - scored
@@ -172,7 +172,7 @@
         when:
             - time_stream_service.stat.exists
   when:
-      - ubuntu2004cis_rule_2_1_5
+      - ubuntu2204cis_rule_2_1_5
   tags:
       - level1
       - scored
@@ -188,9 +188,9 @@
             state: stopped
             enabled: false
         when:
-            - not ubuntu2004cis_rsh_server
+            - not ubuntu2204cis_rsh_server
             - rsh_service_status.stdout == "loaded"
-            - ubuntu2004cis_rule_2_1_6
+            - ubuntu2204cis_rule_2_1_6
 
       - name: "SCORED | 2.1.6 | PATCH | Ensure rsh server is not enabled | rlogin"
         service:
@@ -198,9 +198,9 @@
             state: stopped
             enabled: false
         when:
-            - not ubuntu2004cis_rsh_server
+            - not ubuntu2204cis_rsh_server
             - rlogin_service_status.stdout == "loaded"
-            - ubuntu2004cis_rule_2_1_6
+            - ubuntu2204cis_rule_2_1_6
 
       - name: "SCORED | 2.1.6 | PATCH | Ensure rsh server is not enabled | rexec"
         service:
@@ -208,9 +208,9 @@
             state: stopped
             enabled: false
         when:
-            - not ubuntu2004cis_rsh_server
+            - not ubuntu2204cis_rsh_server
             - rexec_service_status.stdout == "loaded"
-            - ubuntu2004cis_rule_2_1_6
+            - ubuntu2204cis_rule_2_1_6
   tags:
       - level1
       - scored
@@ -223,9 +223,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_ntalk_server
+      - not ubuntu2204cis_ntalk_server
       - ntalk_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_1_7
+      - ubuntu2204cis_rule_2_1_7
   tags:
       - level1
       - scored
@@ -238,9 +238,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_telnet_server
+      - not ubuntu2204cis_telnet_server
       - telnet_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_1_8
+      - ubuntu2204cis_rule_2_1_8
   tags:
       - level1
       - scored
@@ -253,8 +253,8 @@
       state: stopped
       enabled: no
   when:
-      - not ubuntu2004cis_tftp_server
-      - ubuntu2004cis_rule_2_1_9
+      - not ubuntu2204cis_tftp_server
+      - ubuntu2204cis_rule_2_1_9
       - tftp_service_status.stdout == "loaded"
   tags:
       - level1
@@ -269,8 +269,8 @@
       enabled: false
   when:
       - xinetd_service_status.stdout == "loaded"
-      - not ubuntu2004cis_xinetd_required
-      - ubuntu2004cis_rule_2_1_10
+      - not ubuntu2204cis_xinetd_required
+      - ubuntu2204cis_rule_2_1_10
   tags:
       - level1
       - patch
@@ -283,7 +283,7 @@
       state: absent
   when:
       - openbsd_inetd_service_status.stdout == "ok installed"
-      - ubuntu2004cis_rule_2_1_11
+      - ubuntu2204cis_rule_2_1_11
   tags:
       - level1
       - patch
@@ -294,13 +294,13 @@
   block:
       - name: "SCORED | 2.2.1.1 | PATCH | Ensure time synchronization is in use - service install"
         apt:
-            name: "{{ ubuntu2004cis_time_synchronization }}"
+            name: "{{ ubuntu2204cis_time_synchronization }}"
             state: present
             install_recommends: false
 
       - name: "SCORED | 2.2.1.1 | PATCH | Ensure time synchronization is in use - service start"
         service:
-            name: "{{ ubuntu2004cis_time_synchronization }}"
+            name: "{{ ubuntu2204cis_time_synchronization }}"
             state: started
             enabled: true
 
@@ -310,7 +310,7 @@
             state: stopped
             enabled: false
         when:
-            - ubuntu2004cis_time_synchronization == "chrony"
+            - ubuntu2204cis_time_synchronization == "chrony"
             - ntpd_service_status.stdout == "loaded"
 
       - name: "SCORED | 2.2.1.1 | PATCH | Ensure time synchronization is in use - service stop chrony"
@@ -320,7 +320,7 @@
             enabled: false
         ignore_errors: true
         when:
-            - ubuntu2004cis_time_synchronization == "ntp"
+            - ubuntu2204cis_time_synchronization == "ntp"
             - chronyd_service_status.stdout == "loaded"
 
       - name: "SCORED | 2.2.1.1 | PATCH | Ensure time synchronization is in use - mask systemd-timesyncd"
@@ -329,11 +329,11 @@
             enabled: no
             masked: yes
         when:
-            - ubuntu2004cis_time_synchronization == "ntp"
+            - ubuntu2204cis_time_synchronization == "ntp"
             - systemd_timesyncd_service_status.stdout == "loaded"
 
   when:
-      - ubuntu2004cis_rule_2_2_1_1
+      - ubuntu2204cis_rule_2_2_1_1
   tags:
       - level1
       - scored
@@ -346,7 +346,7 @@
   command: /bin/true
   changed_when: false
   when:
-      - ubuntu2004cis_rule_2_2_1_2
+      - ubuntu2204cis_rule_2_2_1_2
   tags:
       - level1
       - notscored
@@ -372,8 +372,8 @@
             state: present
             create: true
   when:
-      - ubuntu2004cis_time_synchronization == "chrony"
-      - ubuntu2004cis_rule_2_2_1_3
+      - ubuntu2204cis_time_synchronization == "chrony"
+      - ubuntu2204cis_rule_2_2_1_3
   tags:
       - level1
       - scored
@@ -397,8 +397,8 @@
             regexp: "^RUNASUSER"
             line: "RUNASUSER=ntp"
   when:
-      - ubuntu2004cis_time_synchronization == "ntp"
-      - ubuntu2004cis_rule_2_2_1_4
+      - ubuntu2204cis_time_synchronization == "ntp"
+      - ubuntu2204cis_rule_2_2_1_4
   tags:
       - level1
       - scored
@@ -413,8 +413,8 @@
           - "x11*"
       state: absent
   when:
-      - not ubuntu2004cis_xwindows_required
-      - ubuntu2004cis_rule_2_2_2
+      - not ubuntu2204cis_xwindows_required
+      - ubuntu2204cis_rule_2_2_2
   tags:
       - level1
       - scored
@@ -428,9 +428,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_avahi_server
+      - not ubuntu2204cis_avahi_server
       - avahi_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_3
+      - ubuntu2204cis_rule_2_2_3
   tags:
       - level1
       - scored
@@ -445,9 +445,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_cups_server
+      - not ubuntu2204cis_cups_server
       - cups_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_4
+      - ubuntu2204cis_rule_2_2_4
   tags:
       - level1
       - scored
@@ -462,9 +462,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_dhcp_server
+      - not ubuntu2204cis_dhcp_server
       - dhcpd_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_5
+      - ubuntu2204cis_rule_2_2_5
   tags:
       - level1
       - scored
@@ -479,9 +479,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_ldap_server
+      - not ubuntu2204cis_ldap_server
       - slapd_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_6
+      - ubuntu2204cis_rule_2_2_6
   tags:
       - level1
       - scored
@@ -496,9 +496,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_nfs_rpc_server
+      - not ubuntu2204cis_nfs_rpc_server
       - nfs_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_7
+      - ubuntu2204cis_rule_2_2_7
   tags:
       - level1
       - scored
@@ -514,9 +514,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_nfs_rpc_server
+      - not ubuntu2204cis_nfs_rpc_server
       - rpcbind_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_7
+      - ubuntu2204cis_rule_2_2_7
   tags:
       - level1
       - scored
@@ -532,9 +532,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_named_server
+      - not ubuntu2204cis_named_server
       - named_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_8
+      - ubuntu2204cis_rule_2_2_8
   tags:
       - level1
       - scored
@@ -549,9 +549,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_vsftpd_server
+      - not ubuntu2204cis_vsftpd_server
       - vsftpd_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_9
+      - ubuntu2204cis_rule_2_2_9
   tags:
       - level1
       - scored
@@ -566,9 +566,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_httpd_server
+      - not ubuntu2204cis_httpd_server
       - httpd_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_10
+      - ubuntu2204cis_rule_2_2_10
   tags:
       - level1
       - scored
@@ -583,9 +583,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_dovecot_server
+      - not ubuntu2204cis_dovecot_server
       - dovecot_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_11
+      - ubuntu2204cis_rule_2_2_11
   tags:
       - level1
       - scored
@@ -601,9 +601,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_smb_server
+      - not ubuntu2204cis_smb_server
       - smb_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_12
+      - ubuntu2204cis_rule_2_2_12
   tags:
       - level1
       - scored
@@ -618,9 +618,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_squid_server
+      - not ubuntu2204cis_squid_server
       - squid_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_13
+      - ubuntu2204cis_rule_2_2_13
   tags:
       - level1
       - scored
@@ -635,9 +635,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_snmp_server
+      - not ubuntu2204cis_snmp_server
       - snmpd_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_14
+      - ubuntu2204cis_rule_2_2_14
   tags:
       - level1
       - scored
@@ -652,9 +652,9 @@
       regexp: "^(#)?inet_interfaces"
       line: "inet_interfaces = localhost"
   when:
-      - not ubuntu2004cis_is_mail_server
+      - not ubuntu2204cis_is_mail_server
       - postfix_installed.rc == 0
-      - ubuntu2004cis_rule_2_2_15
+      - ubuntu2204cis_rule_2_2_15
   tags:
       - level1
       - scored
@@ -667,9 +667,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_rsyncd_server
+      - not ubuntu2204cis_rsyncd_server
       - rsyncd_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_16
+      - ubuntu2204cis_rule_2_2_16
   tags:
       - level1
       - scored
@@ -684,9 +684,9 @@
       state: stopped
       enabled: false
   when:
-      - not ubuntu2004cis_nis_server
+      - not ubuntu2204cis_nis_server
       - ypserv_service_status.stdout == "loaded"
-      - ubuntu2004cis_rule_2_2_17
+      - ubuntu2204cis_rule_2_2_17
   tags:
       - level1
       - scored
@@ -700,8 +700,8 @@
       name: yp-tools
       state: absent
   when:
-      - not ubuntu2004cis_ypbind_required
-      - ubuntu2004cis_rule_2_3_1
+      - not ubuntu2204cis_ypbind_required
+      - ubuntu2204cis_rule_2_3_1
   tags:
       - level1
       - scored
@@ -713,8 +713,8 @@
       name: rsh
       state: absent
   when:
-      - not ubuntu2004cis_rsh_required
-      - ubuntu2004cis_rule_2_3_2
+      - not ubuntu2204cis_rsh_required
+      - ubuntu2204cis_rule_2_3_2
   tags:
       - level1
       - scored
@@ -726,8 +726,8 @@
       name: talk
       state: absent
   when:
-      - not ubuntu2004cis_talk_required
-      - ubuntu2004cis_rule_2_3_3
+      - not ubuntu2204cis_talk_required
+      - ubuntu2204cis_rule_2_3_3
   tags:
       - level1
       - scored
@@ -739,8 +739,8 @@
       name: telnet
       state: absent
   when:
-      - not ubuntu2004cis_telnet_required
-      - ubuntu2004cis_rule_2_3_4
+      - not ubuntu2204cis_telnet_required
+      - ubuntu2204cis_rule_2_3_4
   tags:
       - level1
       - scored
@@ -752,8 +752,8 @@
       name: ldap-utils
       state: absent
   when:
-      - not ubuntu2004cis_openldap_clients_required
-      - ubuntu2004cis_rule_2_3_5
+      - not ubuntu2204cis_openldap_clients_required
+      - ubuntu2204cis_rule_2_3_5
   tags:
       - level1
       - scored
@@ -765,8 +765,8 @@
       name: rpcbind
       state: absent
   when:
-      - not ubuntu2004cis_rpc_required
-      - ubuntu2004cis_rule_2_3_6
+      - not ubuntu2204cis_rpc_required
+      - ubuntu2204cis_rule_2_3_6
   tags:
       - level1
       - scored
@@ -787,8 +787,8 @@
           Run the following command to stop and mask the service:
           # systemctl --now mask <service_name>
   when:
-      - not ubuntu2004cis_rpc_required
-      - ubuntu2004cis_rule_2_4
+      - not ubuntu2204cis_rpc_required
+      - ubuntu2204cis_rule_2_4
   tags:
       - level1
       - notscored
