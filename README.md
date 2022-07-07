@@ -10,7 +10,7 @@ Configure Ubuntu 22.04 machine to be CIS compliant. Level 1 and 2 findings will 
 
 This role **will make changes to the system** that could break things. This is not an auditing tool but rather a remediation tool to be used after an audit has been conducted.
 
-Based on [CIS Ubuntu Linux 22.04 LTS Benchmark - v1.0.0 - 07-21-2020 ](https://www.cisecurity.org/cis-benchmarks/).
+Based on [CIS Ubuntu Linux 20.04 LTS Benchmark - v1.0.0 - 07-21-2020 ](https://www.cisecurity.org/cis-benchmarks/).
 
 ## Feedback
 
