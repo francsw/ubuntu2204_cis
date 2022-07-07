@@ -4,7 +4,7 @@ Ubuntu 22.04 CIS STIG
 [![Build Status](https://travis-ci.com/florianutz/Ubuntu2204_cis.svg?branch=main)](https://travis-ci.com/florianutz/Ubuntu2204_cis)
 [![Ansible Role](https://img.shields.io/badge/role-florianutz.Ubuntu2204--cis-blue.svg)](https://galaxy.ansible.com/florianutz/Ubuntu2204_cis/)
 
-**This role is based on 18.04 migration. The tasks are correct in content, but have to be re-sorted to fit the 22.04 Benchmark. Contribution welcome.**
+**This role is based on 20.04 migration. The tasks are correct in content, but have to be re-sorted to fit the 22.04 Benchmark. Contribution welcome.**
 
 Configure Ubuntu 22.04 machine to be CIS compliant. Level 1 and 2 findings will be corrected by default.
 
