@@ -1,8 +1,9 @@
 Ubuntu 22.04 CIS STIG
 ================
 
-[![Build Status](https://travis-ci.com/florianutz/Ubuntu2204_cis.svg?branch=main)](https://travis-ci.com/florianutz/Ubuntu2204_cis)
-[![Ansible Role](https://img.shields.io/badge/role-florianutz.Ubuntu2204--cis-blue.svg)](https://galaxy.ansible.com/florianutz/Ubuntu2204_cis/)
+This role was cloned from Florianutz (https://github.com/florianutz/Ubuntu2004_cis) repo and changed to work with Ubuntu 22.04.
+98% of the work done on this role was done by him.
+
 
 **This role is based on 20.04 migration. The tasks are correct in content, but have to be re-sorted to fit the 22.04 Benchmark. Contribution welcome.**
 
@@ -28,7 +29,7 @@ If you want to install this via the `ansible-galaxy` command you'll need to run 
 With this in the file requirements.yml:
 
 ```
-- src: https://github.com/florianutz/Ubuntu2204_cis.git
+- src: https://github.com/florianutz/Ubuntu2004_cis.git
 ```
 
 ## Example Playbook
